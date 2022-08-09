@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:satsang_app/screens/wrapper.dart';
+import 'package:satsang_app/screens/authenticate/sign_in.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: Wrapper(),
+      home: SignIn(),
     );
   }
 }
