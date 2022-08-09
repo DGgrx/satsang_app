@@ -20,27 +20,27 @@ class _SignInState extends State<SignIn> {
           padding: const EdgeInsets.all(28.0),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            SizedBox(
+            const SizedBox(
               height: 150,
             ),
-            Text(
+            const Text(
               "India's #1 Satsang Streaming App",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 35.0,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
-            Text(
+            const Text(
               "Insert Your mobile Number",
               textAlign: TextAlign.start,
               style: TextStyle(
                 fontSize: 20.0,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 14,
             ),
             Expanded(
@@ -50,26 +50,28 @@ class _SignInState extends State<SignIn> {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        Text(
+                        const Text(
                           "+91",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 28.0),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10.0,
                         ),
                         Expanded(
                             child: TextFormField(
-                          validator: (value)=> value!.isNotEmpty && value.length == 10
-                              ?null
-                              :"Please Enter a Mobile Number",
+                          validator: (value) =>
+                              value!.isNotEmpty && value.length == 10
+                                  ? null
+                                  : "Please Enter a Mobile Number",
                           onChanged: (value) =>
                               setState(() => mobileNo = value),
-                          style: TextStyle(fontSize: 25.0, letterSpacing: 1.0),
+                          style: const TextStyle(
+                              fontSize: 25.0, letterSpacing: 1.0),
                           maxLength: 10,
                           maxLengthEnforcement: MaxLengthEnforcement.enforced,
                           // validator: ,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               counterText: "",
                               contentPadding: EdgeInsets.symmetric(
                                   vertical: 0, horizontal: 15.0),
@@ -88,12 +90,12 @@ class _SignInState extends State<SignIn> {
                       padding: const EdgeInsets.fromLTRB(0, 35.0, 0, 0),
                       child: ElevatedButton(
                           onPressed: () {
-                            if(_formKey.currentState!.validate()){
-                                print(mobileNo.runtimeType);
+                            if (_formKey.currentState!.validate()) {
+                              print(mobileNo.runtimeType);
                             }
                           },
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(
                                 vertical: 12.0, horizontal: 8.0),
                             child: Text(
                               "Get OTP",
