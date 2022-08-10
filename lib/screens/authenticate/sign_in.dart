@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:satsang_app/screens/authenticate/otp.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:satsang_app/shared/loading.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -29,15 +29,7 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return showLoading
-        ? Container(
-      color: Colors.white,
-          child: Center(
-              child: SpinKitRing(
-                color: Colors.black,
-                size: 50.0,
-              ),
-            ),
-        )
+        ? Loading()
         : currentState == AuthScreen.mobileNoScreen
             ? Scaffold(
                 key: _scaffoldKey,
@@ -130,8 +122,8 @@ class _SignInState extends State<SignIn> {
                                             setState(() => showLoading = true);
 
                                             await _auth.verifyPhoneNumber(
-                                                phoneNumber:
-                                                    "+91"+"${mobileController.text}",
+                                                phoneNumber: "+91" +
+                                                    "${mobileController.text}",
                                                 verificationCompleted:
                                                     (phoneAuthCredentials) async {
                                                   setState(() =>
@@ -158,7 +150,7 @@ class _SignInState extends State<SignIn> {
                                                   });
                                                 },
                                                 codeAutoRetrievalTimeout:
-                                                    (verificationId) async {});
+                                                    (verificationId) {});
                                           }
                                         },
                                         child: const Padding(
@@ -178,6 +170,10 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
               )
-            : OtpScreen(mobileNo: mobileController.text,verificationId: verificationId,showLoading: showLoading,);
+            : OtpScreen(
+                mobileNo: mobileController.text,
+                verificationId: verificationId,
+                showLoading: showLoading,
+              );
   }
 }

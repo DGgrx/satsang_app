@@ -4,7 +4,8 @@ import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_field_style.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:satsang_app/screens/home/home.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:satsang_app/screens/wrapper.dart';
+import 'package:satsang_app/shared/loading.dart';
 
 class OtpScreen extends StatefulWidget {
   OtpScreen(
@@ -27,15 +28,7 @@ class _OtpScreenState extends State<OtpScreen> {
   @override
   Widget build(BuildContext context) {
     return widget.showLoading
-        ? Container(
-      color: Colors.white,
-          child: Center(
-              child: SpinKitRing(
-                color: Colors.black,
-                size: 50.0,
-              ),
-            ),
-        )
+        ? Loading()
         : Scaffold(
             body: SafeArea(
                 child: Column(
@@ -94,7 +87,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         setState(() => widget.showLoading = false);
 
                         if(authCreds.user!=null){
-                          Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>HomePage()) );
+                          Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>Wrapper()) );
                         }
 
                       } catch (e) {
