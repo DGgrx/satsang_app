@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:satsang_app/screens/home/profile.dart';
+import 'package:satsang_app/screens/home/satsang.dart';
 import 'package:satsang_app/screens/wrapper.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,10 +17,7 @@ class _HomePageState extends State<HomePage> {
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Business',
-      style: optionStyle,
-    ),
+    Satsangs(),
     ProfileInfo()
   ];
 
