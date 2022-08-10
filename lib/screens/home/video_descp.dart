@@ -29,13 +29,17 @@ class _VideoScreenState extends State<VideoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return YoutubePlayer(
-        controller: _controller,
-        showVideoProgressIndicator: true,
-        onReady: () {
-          print('Player is ready.');
-        },
-      )
+    return Column(
+      children: [
+        YoutubePlayer(
+            controller: _controller,
+            showVideoProgressIndicator: true,
+            onReady: () {
+              print('Player is ready.');
+            },
+          )
+      ],
+    )
     ;
   }
 }

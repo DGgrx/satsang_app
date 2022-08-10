@@ -5,23 +5,17 @@ import 'package:satsang_app/models/channel_model.dart';
 import 'package:satsang_app/models/video_model.dart';
 import 'package:satsang_app/shared/loading.dart';
 
-
 class SatsangDescrip extends StatefulWidget {
-  SatsangDescrip({
-    required this.channelId,
-    this.vidId,
-    Key? key
-  }) : super(key: key);
-String channelId;
-String? vidId;
-
+  SatsangDescrip({required this.channelId, this.vidId, Key? key})
+      : super(key: key);
+  String channelId;
+  String? vidId;
 
   @override
   State<SatsangDescrip> createState() => _SatsangDescripState();
 }
 
 class _SatsangDescripState extends State<SatsangDescrip> {
-
   Channel? channel;
 
   bool isLoading = false;
@@ -34,8 +28,8 @@ class _SatsangDescripState extends State<SatsangDescrip> {
 
   _initChannel() async {
     setState(() => isLoading = true);
-    Channel chanel = await APIService.instance
-        .fetchChannel(channelId: widget.channelId);
+    Channel chanel =
+        await APIService.instance.fetchChannel(channelId: widget.channelId);
     setState(() {
       channel = chanel;
       isLoading = false;
@@ -67,7 +61,7 @@ class _SatsangDescripState extends State<SatsangDescrip> {
         child: Row(
           children: <Widget>[
             Image(
-              width: 150.0,
+              width: 140.0,
               image: NetworkImage(video.thumbnailUrl.toString()),
             ),
             SizedBox(width: 10.0),
@@ -76,7 +70,7 @@ class _SatsangDescripState extends State<SatsangDescrip> {
                 video.title.toString(),
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 18.0,
+                  fontSize: 15.0,
                 ),
               ),
             ),
@@ -90,21 +84,36 @@ class _SatsangDescripState extends State<SatsangDescrip> {
   Widget build(BuildContext context) {
     return isLoading
         ? Loading()
-    :Scaffold(
-      body: SizedBox(
-        // width: MediaQuery.of(context).size.width,
-        height: 400.0,
-        child: ListView.builder(
-          itemCount: 1 + channel!.videos!.length,
-          itemBuilder: (BuildContext context, int index) {
-            Video video = channel!.videos![index];
-            if (index == 0) {
-              return VideoScreen(id: video.id.toString());
-            }
-            return _buildVideo(video);
-          },
-        ),
-      ),
-    );
+        : Scaffold(
+            body: SizedBox(
+              // width: MediaQuery.of(context).size.width,
+              height: 900.0,
+              child: ListView.builder(
+                itemCount:channel!.videos!.length,
+                itemBuilder: (context, index) {
+                  Video video = channel!.videos![index];
+                  if (index == 0) {
+                    return Column(
+                      children: [
+                        VideoScreen(id: video.id.toString()),
+                        SizedBox(height: 10.0,),
+                        Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Text("${video.title}",
+                          style: TextStyle(
+                            fontSize: 20.0
+                          ),),
+                        )
+
+                      ],
+                    );
+                  } else {
+                    video = channel!.videos![index - 1];
+                    return _buildVideo(video);
+                  }
+                },
+              ),
+            ),
+          );
   }
 }
