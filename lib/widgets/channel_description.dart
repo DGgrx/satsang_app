@@ -41,6 +41,6 @@ class _ChannelDescripState extends State<ChannelDescrip> {
         ),
       ),
     );
-    ;
+
   }
 }

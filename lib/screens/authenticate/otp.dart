@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_field_style.dart';
 import 'package:otp_text_field/style.dart';
-import 'package:satsang_app/screens/home/home.dart';
 import 'package:satsang_app/screens/wrapper.dart';
 import 'package:satsang_app/shared/loading.dart';
 
@@ -28,12 +27,12 @@ class _OtpScreenState extends State<OtpScreen> {
   @override
   Widget build(BuildContext context) {
     return widget.showLoading
-        ? Loading()
+        ? const Loading()
         : Scaffold(
             body: SafeArea(
                 child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 210,
                 ),
                 Padding(
@@ -42,10 +41,10 @@ class _OtpScreenState extends State<OtpScreen> {
                   child: Text(
                     "Please Insert the OTP received in your Mobile Number +91-${widget.mobileNo}",
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 20.0),
+                    style: const TextStyle(fontSize: 20.0),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50.0,
                 ),
                 Padding(
@@ -56,21 +55,19 @@ class _OtpScreenState extends State<OtpScreen> {
                     width: MediaQuery.of(context).size.width,
                     fieldWidth: 50,
                     otpFieldStyle: OtpFieldStyle(),
-                    style: TextStyle(fontSize: 17),
+                    style: const TextStyle(fontSize: 17),
                     textFieldAlignment: MainAxisAlignment.spaceEvenly,
                     keyboardType: TextInputType.number,
                     fieldStyle: FieldStyle.box,
                     outlineBorderRadius: 0.0,
                     onChanged: (pin) {
-                      print("Changed: " + pin);
                     },
                     onCompleted: (pin) {
-                      print("Completed: " + pin);
                       setState(() => otp = pin);
                     },
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30.0,
                 ),
                 ElevatedButton(
@@ -87,14 +84,14 @@ class _OtpScreenState extends State<OtpScreen> {
                         setState(() => widget.showLoading = false);
 
                         if(authCreds.user!=null){
-                          Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>Wrapper()) );
+                          Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>const Wrapper()) );
                         }
 
                       } catch (e) {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
                       }
                     },
-                    child: Padding(
+                    child: const Padding(
                       padding:
                           EdgeInsets.symmetric(vertical: 12.0, horizontal: 8.0),
                       child: Text("Verify", style: TextStyle(fontSize: 19.0)),

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:satsang_app/screens/home/profile.dart';
 import 'package:satsang_app/screens/home/satsang.dart';
-import 'package:satsang_app/screens/wrapper.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,8 +14,8 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static List<Widget> _widgetOptions = <Widget>[
-    Satsangs(),
+  static final List<Widget> _widgetOptions = <Widget>[
+    const Satsangs(),
     ProfileInfo()
   ];
 
@@ -37,7 +35,7 @@ class _HomePageState extends State<HomePage> {
         child: BottomNavigationBar(
 
           elevation: 0.0,
-            items: <BottomNavigationBarItem>[
+            items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(Icons.home,
                 size: 40.0,),

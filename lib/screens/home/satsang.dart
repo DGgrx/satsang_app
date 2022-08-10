@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:satsang_app/services/api_service.dart';
 import 'package:satsang_app/models/channel_model.dart';
-import 'package:satsang_app/models/video_model.dart';
 import 'package:satsang_app/shared/loading.dart';
 import 'package:satsang_app/widgets/channel_description.dart';
 
@@ -40,14 +39,14 @@ class _SatsangsState extends State<Satsangs> {
   @override
   Widget build(BuildContext context) {
     return isLoading
-        ? Loading()
+        ? const Loading()
         : Scaffold(
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 20.0,),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0,horizontal: 10.0),
+                const SizedBox(height: 20.0,),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 10.0),
                   child: Text("Popular Satsangs",
                   style: TextStyle(
                     fontSize: 23.0,

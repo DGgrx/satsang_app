@@ -29,7 +29,7 @@ class _WrapperState extends State<Wrapper> {
 
     return
          _user == null
-            ? SignIn()
-            : HomePage();
+            ? const SignIn()
+            : const HomePage();
   }
 }

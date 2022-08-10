@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideoScreen extends StatefulWidget {
-
   final String id;
 
-  VideoScreen({required this.id});
+  VideoScreen({required this.id, Key? key}) : super(key: key);
 
   @override
   _VideoScreenState createState() => _VideoScreenState();
 }
 
 class _VideoScreenState extends State<VideoScreen> {
-
   late YoutubePlayerController _controller;
 
   @override
@@ -20,7 +18,7 @@ class _VideoScreenState extends State<VideoScreen> {
     super.initState();
     _controller = YoutubePlayerController(
       initialVideoId: widget.id,
-      flags: YoutubePlayerFlags(
+      flags: const YoutubePlayerFlags(
         mute: false,
         autoPlay: true,
       ),
@@ -32,14 +30,11 @@ class _VideoScreenState extends State<VideoScreen> {
     return Column(
       children: [
         YoutubePlayer(
-            controller: _controller,
-            showVideoProgressIndicator: true,
-            onReady: () {
-              print('Player is ready.');
-            },
-          )
+          controller: _controller,
+          showVideoProgressIndicator: true,
+          onReady: () {},
+        )
       ],
-    )
-    ;
+    );
   }
 }

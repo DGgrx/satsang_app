@@ -45,10 +45,10 @@ class _SatsangDescripState extends State<SatsangDescrip> {
         ),
       ),
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
-        padding: EdgeInsets.all(10.0),
+        margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
+        padding: const EdgeInsets.all(10.0),
         height: 140.0,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
           boxShadow: [
             BoxShadow(
@@ -64,11 +64,11 @@ class _SatsangDescripState extends State<SatsangDescrip> {
               width: 140.0,
               image: NetworkImage(video.thumbnailUrl.toString()),
             ),
-            SizedBox(width: 10.0),
+            const SizedBox(width: 10.0),
             Expanded(
               child: Text(
                 video.title.toString(),
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 15.0,
                 ),
@@ -83,7 +83,7 @@ class _SatsangDescripState extends State<SatsangDescrip> {
   @override
   Widget build(BuildContext context) {
     return isLoading
-        ? Loading()
+        ? const Loading()
         : Scaffold(
             body: SizedBox(
               // width: MediaQuery.of(context).size.width,
@@ -96,11 +96,11 @@ class _SatsangDescripState extends State<SatsangDescrip> {
                     return Column(
                       children: [
                         VideoScreen(id: video.id.toString()),
-                        SizedBox(height: 10.0,),
+                        const SizedBox(height: 10.0,),
                         Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: Text("${video.title}",
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 20.0
                           ),),
                         )
