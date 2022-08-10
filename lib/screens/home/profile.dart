@@ -28,7 +28,7 @@ class ProfileInfo extends StatelessWidget {
             SizedBox(height: 20.0,),
 
             // Text("${_user!.phoneNumber}"),
-            Text("${_user!.phoneNumber}",
+            Text("Mobile Number",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 25.0,
